@@ -1,38 +1,96 @@
-# EGO-Agent
+# ✦ EGO Agent — AI 智能助手
 
-This template should help get you started developing with Vue 3 in Vite.
+一个部署在 Windows 本地的全栈 AI Agent 应用，支持多种大模型（OpenAI / DeepSeek / Ollama），模型可自动调用本地文件系统工具，实现自主操作。
 
-## Recommended IDE Setup
+## 技术栈
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+| 层 | 技术 |
+|---|---|
+| 前端 | Vue 3 + Vite + Bootstrap 5 + Vue Router |
+| 后端 | Express 5（Node.js） |
+| 数据库 | MySQL |
+| LLM | OpenAI / DeepSeek / Ollama（本地模型） |
 
-## Recommended Browser Setup
+## 快速开始
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### 环境要求
 
-## Customize configuration
+- Node.js ^20.19.0 或 >=22.12.0
+- MySQL（对话历史持久化）
+- Ollama（可选，使用本地模型时需要）
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
+### 安装与启动
 
 ```sh
-npm run dev
+# 安装依赖（使用 cnpm）
+cnpm install
+
+# 一键启动前后端
+npm start
 ```
 
-### Compile and Minify for Production
+- 前端：http://localhost:5173
+- 后端 API：http://localhost:3000/api
+- 健康检查：http://localhost:3000/api/health
 
-```sh
-npm run build
+### 配置 LLM
+
+编辑 `server/src/LLM/package.json`，配置各 Provider 的 API Key 和启用状态：
+
+```json
+{
+  "llm": {
+    "maxToolRounds": 100,
+    "providers": {
+      "openai": { "enabled": false, "apiKey": "", ... },
+      "deepseek": { "enabled": true, "apiKey": "sk-xxx", ... },
+      "ollama": { "enabled": true, "baseUrl": "http://localhost:11434", ... }
+    }
+  }
+}
 ```
+
+## 核心功能
+
+- **多模型接入**：统一适配 OpenAI、DeepSeek、Ollama 三种 LLM 提供商
+- **文件系统工具**：AI 可自主操作本地文件（读/写/搜索/编辑/删除），支持设置工作区
+- **Agent 角色系统**：内置"聊天助手"和"代码专家"两种角色，支持自定义角色和工具权限
+- **对话历史**：对话自动持久化到 MySQL，支持 CRUD 操作
+- **配置热重载**：修改 LLM 配置后自动生效，无需重启服务
+
+## 可用工具
+
+| 工具 | 说明 |
+|---|---|
+| `set_workspace` | 设置工作区目录 |
+| `ls` | 列出目录内容 |
+| `glob` | 文件模式匹配 |
+| `grep` | 文件内容搜索 |
+| `read_file` | 读取文件 |
+| `write_file` | 写入文件 |
+| `edit_file` | 编辑文件 |
+| `delete` | 删除文件 |
+
+## 项目结构
+
+```
+EGO-Agent/
+├── src/                         # 前端源码（Vue 3）
+│   ├── views/ChatView.vue       # 聊天主界面
+│   └── router/index.js          # 路由配置
+├── server/                      # 后端源码（Express）
+│   ├── index.js                 # ★ 入口：API 路由 + 初始化
+│   └── src/
+│       ├── LLM/                 # LLM 适配层 + Provider
+│       ├── characters/          # Agent 角色注册中心
+│       ├── tools/               # 工具注册中心
+│       ├── prompt/              # System Prompt
+│       └── db/                  # MySQL 连接
+├── ARCHITECTURE.md              # 架构详解
+└── FUNCTION_CALLING_VS_MCP.md   # Function Calling 与 MCP 协议对比
+```
+
+## 相关文档
+
+- [ARCHITECTURE.md](./ARCHITECTURE.md) — 项目架构与运行逻辑详解
+- [FUNCTION_CALLING_VS_MCP.md](./FUNCTION_CALLING_VS_MCP.md) — Function Calling 格式与 MCP 协议对比
