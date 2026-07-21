@@ -1,0 +1,274 @@
+/* ============================================
+   Glass UI — Global Styles
+   Based on UI.md design tokens & Bootstrap 5
+   ============================================ */
+
+/* === CSS Variables (Design Tokens) === */
+:root {
+  --accent: #7c7aff;
+  --accent-light: #9d9bff;
+  --accent-glow: rgba(124, 122, 255, 0.3);
+  --text-primary: #e0e0ff;
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover-border: rgba(255, 255, 255, 0.15);
+  --tag-bg: rgba(124, 122, 255, 0.15);
+  --danger: #ff5252;
+  --success: #4caf50;
+  --warning: #ffc107;
+  --bg-dark: #12121e;
+  --bg-gradient-start: #0f0e1a;
+  --bg-gradient-end: #1a1035;
+  --bg-card: rgba(255, 255, 255, 0.05);
+}
+
+/* === Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-dark) 50%, var(--bg-gradient-end));
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* === Glass Card === */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+}
+
+/* === Navbar Glass === */
+.navbar-glass {
+  background: rgba(18, 18, 30, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* === Buttons === */
+.btn-primary {
+  background: var(--accent) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+  transition: all 0.25s ease !important;
+}
+.btn-primary:hover {
+  background: var(--accent-light) !important;
+  box-shadow: 0 0 20px var(--accent-glow) !important;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  transition: all 0.25s ease !important;
+}
+.btn-outline:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent-light) !important;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.btn-ghost {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s ease !important;
+}
+.btn-ghost:hover {
+  border-color: var(--glass-border) !important;
+  color: var(--text-primary) !important;
+  background: var(--glass-bg) !important;
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer;
+}
+.btn-icon:hover {
+  color: var(--text-primary) !important;
+  background: var(--glass-bg) !important;
+  border-color: var(--glass-border) !important;
+}
+
+/* === Form Inputs === */
+.form-glass {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 10px !important;
+  color: var(--text-primary) !important;
+  padding: 10px 16px !important;
+  transition: all 0.25s ease !important;
+  outline: none !important;
+  width: 100%;
+}
+.form-glass::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+.form-glass:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+/* === Badge === */
+.badge-accent {
+  background: var(--tag-bg) !important;
+  color: var(--accent-light) !important;
+}
+.badge-danger {
+  background: rgba(255, 82, 82, 0.15) !important;
+  color: var(--danger) !important;
+}
+.badge-success {
+  background: rgba(76, 175, 80, 0.15) !important;
+  color: var(--success) !important;
+}
+.badge-warning {
+  background: rgba(255, 193, 7, 0.15) !important;
+  color: var(--warning) !important;
+}
+
+/* === Tag === */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: var(--tag-bg);
+  color: var(--accent-light);
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.tag-sm {
+  padding: 2px 8px;
+  font-size: 0.7rem;
+}
+
+/* === Avatar === */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--tag-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-light);
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+  font-size: 0.85rem;
+}
+.avatar-lg {
+  width: 56px;
+  height: 56px;
+  font-size: 1.4rem;
+}
+
+/* === Animation Keyframes === */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === Subtle link === */
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent);
+}
+
+/* === Selection === */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}

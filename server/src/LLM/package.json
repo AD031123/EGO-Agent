@@ -1,0 +1,70 @@
+{
+  "llm": {
+    "maxToolRounds": 100,
+    "providers": {
+      "openai": {
+        "enabled": false,
+        "baseUrl": "https://api.openai.com/v1",
+        "apiKey": "",
+        "defaultModel": "gpt-4o",
+        "models": [
+          {
+            "id": "gpt-4o",
+            "name": "GPT-4o"
+          },
+          {
+            "id": "gpt-4o-mini",
+            "name": "GPT-4o Mini"
+          },
+          {
+            "id": "gpt-4-turbo",
+            "name": "GPT-4 Turbo"
+          },
+          {
+            "id": "o3-mini",
+            "name": "O3 Mini"
+          }
+        ]
+      },
+      "ollama": {
+        "enabled": true,
+        "baseUrl": "http://localhost:11434",
+        "defaultModel": "qwen2.5",
+        "models": [
+          {
+            "id": "nomic-embed-text:latest",
+            "name": "nomic-embed-text:latest"
+          },
+          {
+            "id": "qwen3.5:9b",
+            "name": "qwen3.5:9b"
+          },
+          {
+            "id": "qwen2.5-coder:7b",
+            "name": "qwen2.5-coder:7b"
+          },
+          {
+            "id": "deepseek-coder:6.7b",
+            "name": "deepseek-coder:6.7b"
+          }
+        ]
+      },
+      "deepseek": {
+        "enabled": true,
+        "baseUrl": "https://api.deepseek.com",
+        "apiKey": "sk-ce01437ae30c4fc4b83f42efebfb2aa0",
+        "defaultModel": "deepseek-chat",
+        "models": [
+          {
+            "id": "deepseek-v4-flash",
+            "name": "deepseek-v4-flash"
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "name": "deepseek-v4-pro"
+          }
+        ]
+      }
+    }
+  }
+}
