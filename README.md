@@ -22,8 +22,8 @@
 ### 安装与启动
 
 ```sh
-# 安装依赖（使用 cnpm）
-cnpm install
+# 安装依赖
+npm install
 
 # 一键启动前后端
 npm start
@@ -89,8 +89,11 @@ EGO-Agent/
 ├── ARCHITECTURE.md              # 架构详解
 └── FUNCTION_CALLING_VS_MCP.md   # Function Calling 与 MCP 协议对比
 ```
+## 项目图片
+<img width="1920" height="957" alt="image" src="https://github.com/user-attachments/assets/a1889c7c-93bf-4ba7-ace6-f7412cbad7ed" />
+<img width="1920" height="957" alt="image" src="https://github.com/user-attachments/assets/cad41586-7b3e-48ca-b0d4-98b732012704" />
+<img width="1920" height="957" alt="image" src="https://github.com/user-attachments/assets/53df03a7-1895-437f-b62e-60a3a80869a8" />
+<img width="1920" height="957" alt="image" src="https://github.com/user-attachments/assets/45c57b5f-7688-4fa4-affd-c54a4d64d11c" />
+<img width="1920" height="957" alt="image" src="https://github.com/user-attachments/assets/e16148d6-f93c-4d8e-966f-a7494ab595d5" />
+<img width="412" height="308" alt="image" src="https://github.com/user-attachments/assets/696586ac-92e6-4f7a-bde9-8965af078a79" />
 
-## 相关文档
-
-- [ARCHITECTURE.md](./ARCHITECTURE.md) — 项目架构与运行逻辑详解
-- [FUNCTION_CALLING_VS_MCP.md](./FUNCTION_CALLING_VS_MCP.md) — Function Calling 格式与 MCP 协议对比
